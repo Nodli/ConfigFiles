@@ -31,3 +31,6 @@ set hidden
 " set tabs width to 4
 "set shiftwidth=4
 "set tabstop=4
+
+" copy / cut / paste to system clipboard
+set clipboard=unnamedplus
