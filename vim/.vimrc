@@ -28,9 +28,14 @@ autocmd FocusLost * silent! wa
 " allows buffers to be hidden without saving
 set hidden
 
-" set tabs width to 4
-"set shiftwidth=4
-"set tabstop=4
-
 " copy / cut / paste to system clipboard
 set clipboard=unnamedplus
+
+" inserts spaces instead of a tabulation when Tab is pressed
+set expandtab
+" cases <Tab> to be equivalent to 4 spaces
+set tabstop=4
+" causes <Tab> and <Backspace> to insert and delete the equivalent number of spaces
+set softtabstop=4
+" causes ==, << and >> to indent using 4 spaces
+set shiftwidth=4
