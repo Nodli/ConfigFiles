@@ -1,16 +1,11 @@
 " code syntax highlighting + colorscheme + font
 syntax on
-colorscheme desert
 
 " disable line breaking
 set nowrap
 
-" gvim gui configuration
-set guioptions=
-set guioptions+=m
-
 " insert mode shortcuts
-inoremap jk <Esc>
+inoremap jk <ESC>
 
 " updating find path to current path
 set path=$PWD/**
@@ -39,3 +34,18 @@ set tabstop=4
 set softtabstop=4
 " causes ==, << and >> to indent using 4 spaces
 set shiftwidth=4
+
+" autocompletion with TAB and cycling with Shift-J / Shift-K
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<TAB>"
+    elseif !pumvisible()
+        return "\<C-N>"
+    else
+        return "\<C-E>"
+    endif
+endfunction
+inoremap <expr> <TAB> InsertTabWrapper()
+inoremap <expr> <S-J> pumvisible() ? "\<C-N>" : "\<S-J>"
+inoremap <expr> <S-K> pumvisible() ? "\<C-P>" : "\<S-K>"
