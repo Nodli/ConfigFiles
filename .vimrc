@@ -1,5 +1,8 @@
-" code syntax highlighting + colorscheme + font
+" code syntax highlighting
 syntax on
+
+" highlight search
+set hlsearch
 
 " disable line breaking
 set nowrap
@@ -18,7 +21,7 @@ set wildmenu
 autocmd BufWritePost * %s/\s\+$//e
 
 " autosave all files on lost focus (ignores complains for untitled buffers)
-autocmd FocusLost * silent! wa
+autocmd FocusLost * silent !wa
 
 " allows buffers to be hidden without saving
 set hidden
@@ -49,3 +52,20 @@ endfunction
 inoremap <expr> <TAB> InsertTabWrapper()
 inoremap <expr> <S-J> pumvisible() ? "\<C-N>" : "\<S-J>"
 inoremap <expr> <S-K> pumvisible() ? "\<C-P>" : "\<S-K>"
+
+" netrw shortcut
+nnoremap <S-TAB> :Explore<CR>
+
+" grep word under cursor shortcut
+nnoremap gr :silent vimgrep /<C-R><C-W>/j  **/*.h **/*.cpp **/*.inl <CR> :copen<CR> :wincmd L<CR>
+
+" activate wrapping in quickfix windows only
+autocmd FileType qf setlocal wrap
+" jump in new window when in quickfix
+function! QuickfixCRWrapper()
+    if &buftype ==# 'quickfix'
+        return "\<C-W>\<CR>:ccl\<CR>"
+    else
+        return "\<CR>"
+endfunction
+n
