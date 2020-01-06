@@ -20,7 +20,7 @@ set wildmenu
 " e avoids showing an error message when no trailing white spaces / tabs is found
 autocmd BufWritePost * %s/\s\+$//e
 
-" autosave all files on lost focus (ignores complains for untitled buffers)
+" autosave all files on lost focus (ignores complaints for untitled buffers)
 autocmd FocusLost * silent !wa
 
 " allows buffers to be hidden without saving
