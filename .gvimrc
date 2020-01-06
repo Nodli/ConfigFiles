@@ -9,4 +9,3 @@ set nowrap
 
 " gvim gui configuration
 set guioptions=
-" set guioptions+=m
