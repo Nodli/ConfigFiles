@@ -55,6 +55,8 @@ inoremap <expr> <S-K> pumvisible() ? "\<C-P>" : "\<S-K>"
 
 " netrw shortcut
 nnoremap <S-TAB> :Explore<CR>
+" ignoring *.swp files in netrw
+let g:netrw_list_hide= '.*\.swp$'
 
 " grep word under cursor shortcut
 nnoremap gr :silent vimgrep /<C-R><C-W>/j  **/*.h **/*.cpp **/*.inl <CR> :copen<CR> :wincmd L<CR>
@@ -68,4 +70,8 @@ function! QuickfixCRWrapper()
     else
         return "\<CR>"
 endfunction
-n
+nnoremap <expr> <CR> QuickfixCRWrapper()
+
+" NOTE(hugo) & TODO(hugo)
+inoremap <F1> NOTE(hugo):
+inoremap <F2> TODO(hugo):
