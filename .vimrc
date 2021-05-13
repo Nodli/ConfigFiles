@@ -35,6 +35,9 @@ autocmd BufWritePost * %s/\s\+$//e
 " allows buffers to be hidden without saving
 set hidden
 
+" automatically reloads buffer that are modified outside of vim
+set autoread
+
 " copy / cut / paste to system clipboard
 if has('win64') || has('win32')
     set clipboard=unnamed
