@@ -7,6 +7,9 @@ set nowrap
 " show line numbers
 set number
 
+" highlight line
+set cursorline
+
 " always show the status line
 set laststatus=2
 " show column numbers
@@ -96,6 +99,9 @@ inoremap <F2> TODO(hugo):
 if has('gui_running')
     " disable the windows menu bar
     set guioptions=
+
+    " remember the window size and position
+    set sessionoptions+=resize,winpos
 
     " override the default font
     if has('win64') || has('win32')
